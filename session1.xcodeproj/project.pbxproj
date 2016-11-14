@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F11871281DD9C2CD009209A7 /* OtherEnemyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11871271DD9C2CD009209A7 /* OtherEnemyController.swift */; };
+		F118712A1DD9D10E009209A7 /* OtherEnemyBulletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11871291DD9D10E009209A7 /* OtherEnemyBulletController.swift */; };
+		F1353EF71DD4A7CF00F61E67 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1353EF61DD4A7CF00F61E67 /* Util.swift */; };
+		F1353EFA1DD4BF9200F61E67 /* PlayerBulletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1353EF91DD4BF9200F61E67 /* PlayerBulletController.swift */; };
+		F1353EFD1DD4C4DE00F61E67 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1353EFC1DD4C4DE00F61E67 /* Constants.swift */; };
 		F15638051DCDCBF3003457CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15638041DCDCBF3003457CC /* AppDelegate.swift */; };
 		F15638091DCDCBF3003457CC /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F15638081DCDCBF3003457CC /* Actions.sks */; };
 		F156380B1DCDCBF3003457CC /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F156380A1DCDCBF3003457CC /* GameScene.swift */; };
@@ -14,9 +19,18 @@
 		F15638101DCDCBF3003457CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F156380E1DCDCBF3003457CC /* Main.storyboard */; };
 		F15638121DCDCBF3003457CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F15638111DCDCBF3003457CC /* Assets.xcassets */; };
 		F15638151DCDCBF3003457CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15638131DCDCBF3003457CC /* LaunchScreen.storyboard */; };
+		F1CEB3011DD6BEAB005DB976 /* EnemyBulletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CEB3001DD6BEAB005DB976 /* EnemyBulletController.swift */; };
+		F1EA4EA51DD69C0E00D8E6EA /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA4EA41DD69C0E00D8E6EA /* Controller.swift */; };
+		F1EA4EA71DD6AF5600D8E6EA /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA4EA61DD6AF5600D8E6EA /* PlayerController.swift */; };
+		F1EA4EA91DD6B80B00D8E6EA /* EnemyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA4EA81DD6B80B00D8E6EA /* EnemyController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F11871271DD9C2CD009209A7 /* OtherEnemyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherEnemyController.swift; sourceTree = "<group>"; };
+		F11871291DD9D10E009209A7 /* OtherEnemyBulletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherEnemyBulletController.swift; sourceTree = "<group>"; };
+		F1353EF61DD4A7CF00F61E67 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		F1353EF91DD4BF9200F61E67 /* PlayerBulletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerBulletController.swift; sourceTree = "<group>"; };
+		F1353EFC1DD4C4DE00F61E67 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F15638011DCDCBF3003457CC /* session1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = session1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F15638041DCDCBF3003457CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F15638081DCDCBF3003457CC /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -26,6 +40,10 @@
 		F15638111DCDCBF3003457CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F15638141DCDCBF3003457CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F15638161DCDCBF3003457CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1CEB3001DD6BEAB005DB976 /* EnemyBulletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyBulletController.swift; sourceTree = "<group>"; };
+		F1EA4EA41DD69C0E00D8E6EA /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		F1EA4EA61DD6AF5600D8E6EA /* PlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
+		F1EA4EA81DD6B80B00D8E6EA /* EnemyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +57,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F1353EF81DD4BF3F00F61E67 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F1353EF91DD4BF9200F61E67 /* PlayerBulletController.swift */,
+				F1CEB3001DD6BEAB005DB976 /* EnemyBulletController.swift */,
+				F1EA4EA41DD69C0E00D8E6EA /* Controller.swift */,
+				F1EA4EA61DD6AF5600D8E6EA /* PlayerController.swift */,
+				F1EA4EA81DD6B80B00D8E6EA /* EnemyController.swift */,
+				F11871271DD9C2CD009209A7 /* OtherEnemyController.swift */,
+				F11871291DD9D10E009209A7 /* OtherEnemyBulletController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F1353EFB1DD4C4BE00F61E67 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				F1353EFC1DD4C4DE00F61E67 /* Constants.swift */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
 		F15637F81DCDCBF2003457CC = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +98,8 @@
 		F15638031DCDCBF3003457CC /* session1 */ = {
 			isa = PBXGroup;
 			children = (
+				F1353EFB1DD4C4BE00F61E67 /* Constants */,
+				F1353EF81DD4BF3F00F61E67 /* Controllers */,
 				F15638041DCDCBF3003457CC /* AppDelegate.swift */,
 				F15638081DCDCBF3003457CC /* Actions.sks */,
 				F156380A1DCDCBF3003457CC /* GameScene.swift */,
@@ -66,6 +108,7 @@
 				F15638111DCDCBF3003457CC /* Assets.xcassets */,
 				F15638131DCDCBF3003457CC /* LaunchScreen.storyboard */,
 				F15638161DCDCBF3003457CC /* Info.plist */,
+				F1353EF61DD4A7CF00F61E67 /* Util.swift */,
 			);
 			path = session1;
 			sourceTree = "<group>";
@@ -143,9 +186,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1CEB3011DD6BEAB005DB976 /* EnemyBulletController.swift in Sources */,
 				F156380B1DCDCBF3003457CC /* GameScene.swift in Sources */,
+				F1EA4EA91DD6B80B00D8E6EA /* EnemyController.swift in Sources */,
+				F11871281DD9C2CD009209A7 /* OtherEnemyController.swift in Sources */,
+				F1EA4EA71DD6AF5600D8E6EA /* PlayerController.swift in Sources */,
 				F156380D1DCDCBF3003457CC /* GameViewController.swift in Sources */,
 				F15638051DCDCBF3003457CC /* AppDelegate.swift in Sources */,
+				F1353EFA1DD4BF9200F61E67 /* PlayerBulletController.swift in Sources */,
+				F1353EF71DD4A7CF00F61E67 /* Util.swift in Sources */,
+				F1353EFD1DD4C4DE00F61E67 /* Constants.swift in Sources */,
+				F118712A1DD9D10E009209A7 /* OtherEnemyBulletController.swift in Sources */,
+				F1EA4EA51DD69C0E00D8E6EA /* Controller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
