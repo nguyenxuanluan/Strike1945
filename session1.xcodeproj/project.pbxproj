@@ -19,6 +19,7 @@
 		F15638101DCDCBF3003457CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F156380E1DCDCBF3003457CC /* Main.storyboard */; };
 		F15638121DCDCBF3003457CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F15638111DCDCBF3003457CC /* Assets.xcassets */; };
 		F15638151DCDCBF3003457CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15638131DCDCBF3003457CC /* LaunchScreen.storyboard */; };
+		F1CC52421DDC6AE000A480FC /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CC52411DDC6AE000A480FC /* GameOver.swift */; };
 		F1CEB3011DD6BEAB005DB976 /* EnemyBulletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CEB3001DD6BEAB005DB976 /* EnemyBulletController.swift */; };
 		F1EA4EA51DD69C0E00D8E6EA /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA4EA41DD69C0E00D8E6EA /* Controller.swift */; };
 		F1EA4EA71DD6AF5600D8E6EA /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA4EA61DD6AF5600D8E6EA /* PlayerController.swift */; };
@@ -40,6 +41,7 @@
 		F15638111DCDCBF3003457CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F15638141DCDCBF3003457CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F15638161DCDCBF3003457CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1CC52411DDC6AE000A480FC /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameOver.swift; path = ../GameOver.swift; sourceTree = "<group>"; };
 		F1CEB3001DD6BEAB005DB976 /* EnemyBulletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyBulletController.swift; sourceTree = "<group>"; };
 		F1EA4EA41DD69C0E00D8E6EA /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		F1EA4EA61DD6AF5600D8E6EA /* PlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				F15638041DCDCBF3003457CC /* AppDelegate.swift */,
 				F15638081DCDCBF3003457CC /* Actions.sks */,
 				F156380A1DCDCBF3003457CC /* GameScene.swift */,
+				F1CC52411DDC6AE000A480FC /* GameOver.swift */,
 				F156380C1DCDCBF3003457CC /* GameViewController.swift */,
 				F156380E1DCDCBF3003457CC /* Main.storyboard */,
 				F15638111DCDCBF3003457CC /* Assets.xcassets */,
@@ -189,6 +192,7 @@
 				F1CEB3011DD6BEAB005DB976 /* EnemyBulletController.swift in Sources */,
 				F156380B1DCDCBF3003457CC /* GameScene.swift in Sources */,
 				F1EA4EA91DD6B80B00D8E6EA /* EnemyController.swift in Sources */,
+				F1CC52421DDC6AE000A480FC /* GameOver.swift in Sources */,
 				F11871281DD9C2CD009209A7 /* OtherEnemyController.swift in Sources */,
 				F1EA4EA71DD6AF5600D8E6EA /* PlayerController.swift in Sources */,
 				F156380D1DCDCBF3003457CC /* GameViewController.swift in Sources */,

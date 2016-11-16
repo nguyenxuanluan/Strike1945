@@ -9,8 +9,16 @@
 import SpriteKit
 import GameplayKit
 import Darwin
+import UIKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
+    
+    var scoreLabel:SKLabelNode!
+    var score:Int = 0 {
+        didSet {
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
     var playerHeath=3
     let playerController=PlayerController()
      var repeatAddEnemies : Timer!
@@ -19,11 +27,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let background=SKSpriteNode(imageNamed: "background")
         background.anchorPoint = CGPoint(x: 0, y: 0)
         background.position = CGPoint(x: 0, y: 0)
+        background.zPosition = -1
+        
         self.addChild(background)
         
     }
-
+    func addScore(){
+        scoreLabel = SKLabelNode(text: "Score: 0")
+        scoreLabel.position = CGPoint(x: 100, y: self.size.height - 60)
+        scoreLabel.fontName = "AmericanTypewriter-Bold"
+        scoreLabel.fontSize = 36
+        scoreLabel.fontColor = UIColor.white
+        score = 0
+        self.addChild(scoreLabel)
+    }
     override func didMove(to view: SKView) {
+        //addButton()
+        addScore()
         addBackGround()
         configPhysics()
         let playerPosition=CGPoint(x: self.size.width/2, y: playerController.height/2)
@@ -35,32 +55,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
        
         
     }
+
     func didBegin(_ contact: SKPhysicsContact) {
-        let nodeA=contact.bodyA.node
-        let nodeB=contact.bodyB.node
-        if ( contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask)==( PLAYER_BULLET_MASK | ENEMY_MASK){
-            displayExplosion(position: (nodeA?.position)!)
-            nodeA?.removeFromParent()
-            nodeB?.removeFromParent()
+        var firstBody:SKPhysicsBody
+        var secondBody:SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        }else{
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        if (firstBody.categoryBitMask & PLAYER_BULLET_MASK) != 0 && (secondBody.categoryBitMask & ENEMY_MASK) != 0 {
+            
+            explosion(player: firstBody.node as! SKSpriteNode , enemy: secondBody.node as! SKSpriteNode )
             
             
         }
-        if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask) == (PLAYER_MASK|ENEMY_BULLET_MASK){
-            playerHeath-=1;
-            if nodeA?.physicsBody?.categoryBitMask == ENEMY_BULLET_MASK {
-                nodeA?.removeFromParent()
+        if(firstBody.categoryBitMask & PLAYER_MASK) != 0 && (secondBody.categoryBitMask & ENEMY_BULLET_MASK) != 0{
+            let scene=GameOverScene(size: self.frame.size)
+            if let view:SKView=self.view {
+                view.presentScene(scene , transition: SKTransition.fade(withDuration: 0.1))
             }
-            if nodeB?.physicsBody?.categoryBitMask == ENEMY_BULLET_MASK {
-                nodeB?.removeFromParent()
-            }
-            if(playerHeath==0){
-                addNewScene()
-                repeatAddEnemies.invalidate()
-                repeatAddOtherEnemies.invalidate()
-            }
-            
         }
-     
     }
     func didEnd(_ contact: SKPhysicsContact) {
         
@@ -121,18 +140,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
            playerController.move(vector: movementVector)
         }
     }
-    func soundExplosion(){
-        let soundExplosion=SKAction.playSoundFileNamed("Explosion3", waitForCompletion: true)
-        self.run(soundExplosion)
-    }
-   
-    func displayExplosion(position:CGPoint){
-        let explosion=SKSpriteNode(imageNamed: "explosion-1")
+    
+    func  explosion(player:SKSpriteNode, enemy:SKSpriteNode) {
+        
+        let explosion = SKSpriteNode(imageNamed: "explosion-1")
         explosion.size=CGSize(width: 40, height: 40)
-        explosion.position=position
+        explosion.position = enemy.position
         self.addChild(explosion)
-        let fade=SKAction.fadeOut(withDuration: 0.1)
-        explosion.run(SKAction.sequence([fade,SKAction.removeFromParent()]))
+        
+        //self.run(SKAction.playSoundFileNamed("Explosion3", waitForCompletion: false))
+        
+        player.removeFromParent()
+        enemy.removeFromParent()
+        
+        
+        self.run(SKAction.wait(forDuration: 0.1)) {
+            explosion.removeFromParent()
+        }
+        
+        score += 1
+        
+        
     }
+
 
 }
