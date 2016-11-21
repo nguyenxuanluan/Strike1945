@@ -10,6 +10,7 @@ import SpriteKit
 class GameOverScene: SKScene{
     let SIDE_PLAY_AGAIN:CGFloat=70
     let playAgain=SKLabelNode(text: "PLAY AGAIN")
+    let soundExlosion=SKAction.playSoundFileNamed("goSound", waitForCompletion: false)
     func addBackGround(){
         let background = SKSpriteNode(imageNamed: "bg.jpg")
         background.anchorPoint = CGPoint(x: 0, y: 0)
@@ -35,6 +36,7 @@ class GameOverScene: SKScene{
         addBackGround()
         addGameOverLabel()
         addPlayAgainLabel()
+        self.run(soundExlosion)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first{

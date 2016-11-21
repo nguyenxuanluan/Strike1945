@@ -23,7 +23,18 @@ extension CGPoint{
         let dy=self.y-other.y
         return sqrt(dx*dx + dy*dy)
     }
+    func substract(other: CGPoint) -> CGVector{
+        return CGVector(dx: self.x - other.x, dy: self.y-other.y)
+    }
  
+}
+extension CGVector{
+    func multiple(ratio:CGFloat) -> CGVector{
+        return CGVector(dx: self.dx*ratio, dy: self.dy*ratio)
+    }
+    func divide(ratio:CGFloat) -> CGVector{
+        return CGVector(dx: self.dx/ratio, dy: self.dy/ratio)
+    }
 }
 extension SKAction {
       static func moveToTop(position:CGPoint, rect: CGRect , speed:CGFloat) -> SKAction{
@@ -37,8 +48,8 @@ extension SKAction {
         let time=distance/speed
         return SKAction.moveTo(y: 0, duration: Double(time))
     }
-    static func moveAndRemove(action: SKAction) ->SKAction{
-        return SKAction.sequence([action,SKAction.removeFromParent()])
+    static func moveAndRemove(position: CGPoint, speed: CGFloat) ->SKAction{
+        return SKAction.sequence([SKAction.movetoBot(position: position, speed: speed),SKAction.removeFromParent()])
     }
     static func moveToRight(position: CGPoint,rect: CGRect,speed: CGFloat) -> SKAction{
         let dx=rect.width

@@ -8,10 +8,15 @@
 
 import SpriteKit
 class Controller{
-    let view:SKSpriteNode
+    let view:View
     var parent:SKNode!
-    init(view:SKSpriteNode){
+    init(view:View){
         self.view=view
+    }
+    var size:CGSize{
+        get {
+            return self.view.size
+        }
     }
     var witdth:CGFloat{
         get{

@@ -6,7 +6,7 @@
   "data" : [
     {
       "idiom" : "universal",
-      "filename" : "Explosion18.wav"
+      "filename" : "playerExplosionSound.wav"
     }
   ]
 }

@@ -8,11 +8,14 @@
 
 import SpriteKit
 class EnemyController:Controller{
+    let explosion = SKSpriteNode(imageNamed: "explosion-1")
+    
+    
     let SPEED:CGFloat = 100
     let SHOOT_INTERVAL = 0.5
     init(texture:SKTexture){
-        super.init(view: SKSpriteNode(texture: texture) )
-        view.physicsBody=SKPhysicsBody(texture: texture, size: texture.size())
+        super.init(view: View(texture: texture, size: texture.size()) )
+        view.physicsBody=SKPhysicsBody(rectangleOf: self.view.size)
         view.physicsBody?.categoryBitMask=ENEMY_MASK
         view.physicsBody?.contactTestBitMask=PLAYER_BULLET_MASK
         view.physicsBody?.collisionBitMask=0
@@ -21,7 +24,14 @@ class EnemyController:Controller{
         super.config(position: position, parent: parent)
         configMove()
         configShoot()
-        
+        view.handleContact = {
+            otherView in
+            
+            otherView.removeFromParent()
+
+                self.view.removeFromParent()
+            self.explosion(otherView: otherView)
+        }
         
     }
     func configMove(){
@@ -40,5 +50,18 @@ class EnemyController:Controller{
         view.run(shootForever)
         
     }
-    
+    func explosion(otherView: View){
+        let playSound=SKAction.playSoundFileNamed("Explosion3", waitForCompletion: false)
+        self.explosion.size=CGSize(width: 40, height: 40)
+        self.explosion.position = otherView.position
+        parent.addChild(self.explosion)
+        let remove=SKAction.run {
+            self.explosion.removeFromParent()
+        }
+        parent.run(SKAction.sequence([SKAction.wait(forDuration: 0.1),remove]))
+        parent.run(playSound)
+        
+    }
 }
+
+

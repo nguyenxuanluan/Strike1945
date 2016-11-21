@@ -12,15 +12,20 @@ import Darwin
 import UIKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
-    
     var scoreLabel:SKLabelNode!
     var score:Int = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
         }
     }
-    var playerHeath=3
-    let playerController=PlayerController()
+    var hpLabel:SKLabelNode!
+     var hp = 10 {
+        didSet {
+            hpLabel.text = "HP: \(hp)"
+        }
+    }
+  
+    let playerController=PlayerController.instance
      var repeatAddEnemies : Timer!
     var repeatAddOtherEnemies : Timer!
     func addBackGround(){
@@ -41,15 +46,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         score = 0
         self.addChild(scoreLabel)
     }
+    func addHp() {
+        hpLabel = SKLabelNode(text: "HP: 10")
+        hpLabel.position=CGPoint(x: 45, y: 10)
+        hpLabel.fontName="AmericanTypewriter-Bold"
+        hpLabel.fontSize=20
+        hpLabel.fontColor=UIColor.green
+        self.addChild(hpLabel)
+    }
+    func physhics(){
+        let frame=SKSpriteNode(imageNamed: "background")
+        frame.anchorPoint = CGPoint(x: 0, y: 0)
+        frame.position = CGPoint(x: 0, y: 0)
+        frame.physicsBody=SKPhysicsBody(rectangleOf: frame.size)
+        frame.physicsBody?.categoryBitMask=FRAME_MASK
+        frame.physicsBody?.contactTestBitMask=ENEMY_BULLET_MASK
+        frame.physicsBody?.collisionBitMask=0
+
+    }
     override func didMove(to view: SKView) {
-        //addButton()
         addScore()
+        addHp()
         addBackGround()
         configPhysics()
+        ControllerManger.instance.config(parent: self)
+        
         let playerPosition=CGPoint(x: self.size.width/2, y: playerController.height/2)
         playerController.config(position: playerPosition, parent: self)
-        addEnemies()
-        addOtherEnemies()
+        physhics()
+        //addEnemies()
+        //addOtherEnemies()
         repeatAddEnemies = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(addEnemies), userInfo: nil, repeats: true)
         repeatAddOtherEnemies = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(addOtherEnemies), userInfo: nil, repeats: true)
        
@@ -57,42 +83,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
 
     func didBegin(_ contact: SKPhysicsContact) {
-        var firstBody:SKPhysicsBody
-        var secondBody:SKPhysicsBody
-        
-        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
-            firstBody = contact.bodyA
-            secondBody = contact.bodyB
-        }else{
-            firstBody = contact.bodyB
-            secondBody = contact.bodyA
+        guard let viewA=contact.bodyA.node as? View,
+        let viewB=contact.bodyB.node as? View
+            else{
+                return
         }
-        
-        if (firstBody.categoryBitMask & PLAYER_BULLET_MASK) != 0 && (secondBody.categoryBitMask & ENEMY_MASK) != 0 {
-            
-            explosion(player: firstBody.node as! SKSpriteNode , enemy: secondBody.node as! SKSpriteNode )
-            
-            
+        if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask)
+            == (PLAYER_MASK | ENEMY_BULLET_MASK){
+            hp-=1
+                    }
+        viewA.handleContact?(viewB)
+        viewB.handleContact?(viewA)
+        if hp==0 {
+            self.run(SKAction.sequence([SKAction.wait(forDuration: 3),SKAction.run(newScene)]))
         }
-        if(firstBody.categoryBitMask & PLAYER_MASK) != 0 && (secondBody.categoryBitMask & ENEMY_BULLET_MASK) != 0{
-            let scene=GameOverScene(size: self.frame.size)
-            if let view:SKView=self.view {
-                view.presentScene(scene , transition: SKTransition.fade(withDuration: 0.1))
-            }
-        }
+        score+=1
     }
     func didEnd(_ contact: SKPhysicsContact) {
         
     }
-    func addNewScene(){
-        let newScene=SKSpriteNode(imageNamed: "GameOver")
-        newScene.anchorPoint=CGPoint(x: 0, y: 0)
-        newScene.position=CGPoint(x:0,y:0)
-        newScene.size=CGSize(width: self.size.width, height: self.size.height)
-        self.removeAllActions()
-        self.removeAllChildren()
-        self.addChild(newScene)
-    }
+
     func addEnemies(){
         let enemyController1=EnemyController(texture: ENEMY_TEXTURE1)
         let enemyController2=EnemyController(texture: ENEMY_TEXTURE2)
@@ -140,28 +150,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
            playerController.move(vector: movementVector)
         }
     }
-    
-    func  explosion(player:SKSpriteNode, enemy:SKSpriteNode) {
-        
-        let explosion = SKSpriteNode(imageNamed: "explosion-1")
-        explosion.size=CGSize(width: 40, height: 40)
-        explosion.position = enemy.position
-        self.addChild(explosion)
-        
-        //self.run(SKAction.playSoundFileNamed("Explosion3", waitForCompletion: false))
-        
-        player.removeFromParent()
-        enemy.removeFromParent()
-        
-        
-        self.run(SKAction.wait(forDuration: 0.1)) {
-            explosion.removeFromParent()
+    func newScene(){
+        let scene = GameOverScene(size: self.size)
+
+        if let otherView:SKView=self.view {
+            otherView.presentScene(scene)
         }
         
-        score += 1
-        
-        
     }
+    
 
 
 }

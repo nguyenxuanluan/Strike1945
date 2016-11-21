@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F1143D5F1DE034A2005DC4AD /* ControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1143D5E1DE034A2005DC4AD /* ControllerManager.swift */; };
+		F1143D611DE03D29005DC4AD /* GreenEnemyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1143D601DE03D29005DC4AD /* GreenEnemyController.swift */; };
+		F1143D631DE04F28005DC4AD /* GiftController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1143D621DE04F28005DC4AD /* GiftController.swift */; };
 		F11871281DD9C2CD009209A7 /* OtherEnemyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11871271DD9C2CD009209A7 /* OtherEnemyController.swift */; };
 		F118712A1DD9D10E009209A7 /* OtherEnemyBulletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11871291DD9D10E009209A7 /* OtherEnemyBulletController.swift */; };
 		F1353EF71DD4A7CF00F61E67 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1353EF61DD4A7CF00F61E67 /* Util.swift */; };
@@ -19,6 +22,7 @@
 		F15638101DCDCBF3003457CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F156380E1DCDCBF3003457CC /* Main.storyboard */; };
 		F15638121DCDCBF3003457CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F15638111DCDCBF3003457CC /* Assets.xcassets */; };
 		F15638151DCDCBF3003457CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15638131DCDCBF3003457CC /* LaunchScreen.storyboard */; };
+		F1C6791B1DDD8ED4001393A5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C6791A1DDD8ED4001393A5 /* View.swift */; };
 		F1CC52421DDC6AE000A480FC /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CC52411DDC6AE000A480FC /* GameOver.swift */; };
 		F1CEB3011DD6BEAB005DB976 /* EnemyBulletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CEB3001DD6BEAB005DB976 /* EnemyBulletController.swift */; };
 		F1EA4EA51DD69C0E00D8E6EA /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA4EA41DD69C0E00D8E6EA /* Controller.swift */; };
@@ -27,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F1143D5E1DE034A2005DC4AD /* ControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerManager.swift; sourceTree = "<group>"; };
+		F1143D601DE03D29005DC4AD /* GreenEnemyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreenEnemyController.swift; sourceTree = "<group>"; };
+		F1143D621DE04F28005DC4AD /* GiftController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiftController.swift; sourceTree = "<group>"; };
 		F11871271DD9C2CD009209A7 /* OtherEnemyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherEnemyController.swift; sourceTree = "<group>"; };
 		F11871291DD9D10E009209A7 /* OtherEnemyBulletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherEnemyBulletController.swift; sourceTree = "<group>"; };
 		F1353EF61DD4A7CF00F61E67 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -41,6 +48,7 @@
 		F15638111DCDCBF3003457CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F15638141DCDCBF3003457CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F15638161DCDCBF3003457CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1C6791A1DDD8ED4001393A5 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		F1CC52411DDC6AE000A480FC /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameOver.swift; path = ../GameOver.swift; sourceTree = "<group>"; };
 		F1CEB3001DD6BEAB005DB976 /* EnemyBulletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyBulletController.swift; sourceTree = "<group>"; };
 		F1EA4EA41DD69C0E00D8E6EA /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -62,13 +70,16 @@
 		F1353EF81DD4BF3F00F61E67 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F1143D621DE04F28005DC4AD /* GiftController.swift */,
 				F1353EF91DD4BF9200F61E67 /* PlayerBulletController.swift */,
+				F1143D601DE03D29005DC4AD /* GreenEnemyController.swift */,
 				F1CEB3001DD6BEAB005DB976 /* EnemyBulletController.swift */,
 				F1EA4EA41DD69C0E00D8E6EA /* Controller.swift */,
 				F1EA4EA61DD6AF5600D8E6EA /* PlayerController.swift */,
 				F1EA4EA81DD6B80B00D8E6EA /* EnemyController.swift */,
 				F11871271DD9C2CD009209A7 /* OtherEnemyController.swift */,
 				F11871291DD9D10E009209A7 /* OtherEnemyBulletController.swift */,
+				F1143D5E1DE034A2005DC4AD /* ControllerManager.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -100,6 +111,7 @@
 		F15638031DCDCBF3003457CC /* session1 */ = {
 			isa = PBXGroup;
 			children = (
+				F1C679191DDD8EBC001393A5 /* Views */,
 				F1353EFB1DD4C4BE00F61E67 /* Constants */,
 				F1353EF81DD4BF3F00F61E67 /* Controllers */,
 				F15638041DCDCBF3003457CC /* AppDelegate.swift */,
@@ -114,6 +126,14 @@
 				F1353EF61DD4A7CF00F61E67 /* Util.swift */,
 			);
 			path = session1;
+			sourceTree = "<group>";
+		};
+		F1C679191DDD8EBC001393A5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F1C6791A1DDD8ED4001393A5 /* View.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +209,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1143D631DE04F28005DC4AD /* GiftController.swift in Sources */,
+				F1143D5F1DE034A2005DC4AD /* ControllerManager.swift in Sources */,
 				F1CEB3011DD6BEAB005DB976 /* EnemyBulletController.swift in Sources */,
 				F156380B1DCDCBF3003457CC /* GameScene.swift in Sources */,
 				F1EA4EA91DD6B80B00D8E6EA /* EnemyController.swift in Sources */,
@@ -196,11 +218,13 @@
 				F11871281DD9C2CD009209A7 /* OtherEnemyController.swift in Sources */,
 				F1EA4EA71DD6AF5600D8E6EA /* PlayerController.swift in Sources */,
 				F156380D1DCDCBF3003457CC /* GameViewController.swift in Sources */,
+				F1143D611DE03D29005DC4AD /* GreenEnemyController.swift in Sources */,
 				F15638051DCDCBF3003457CC /* AppDelegate.swift in Sources */,
 				F1353EFA1DD4BF9200F61E67 /* PlayerBulletController.swift in Sources */,
 				F1353EF71DD4A7CF00F61E67 /* Util.swift in Sources */,
 				F1353EFD1DD4C4DE00F61E67 /* Constants.swift in Sources */,
 				F118712A1DD9D10E009209A7 /* OtherEnemyBulletController.swift in Sources */,
+				F1C6791B1DDD8ED4001393A5 /* View.swift in Sources */,
 				F1EA4EA51DD69C0E00D8E6EA /* Controller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

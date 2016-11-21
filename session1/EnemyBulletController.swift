@@ -10,20 +10,30 @@ import SpriteKit
 class EnemyBulletController:Controller{
     let SPEED:CGFloat=200.0
     init(texture : SKTexture){
-        super.init(view: SKSpriteNode(texture: texture))
+        super.init(view: View(texture: texture))
         view.name="enemy_bullet"
-        view.physicsBody=SKPhysicsBody(texture: ENEMY_BULLET_TEXTURE, size: view.size)
+        view.physicsBody=SKPhysicsBody(rectangleOf: self.view.size)
         view.physicsBody?.categoryBitMask=ENEMY_BULLET_MASK
-        view.physicsBody?.contactTestBitMask=PLAYER_MASK
+        view.physicsBody?.contactTestBitMask=PLAYER_MASK | FRAME_MASK
         view.physicsBody?.collisionBitMask=0
+        self.view.handleContact = {
+            otherView in
+            if ((otherView.physicsBody?.categoryBitMask)! & FRAME_MASK) != 0{
+                print("Remove from frame") 
+            }
+            self.view.removeFromParent()
+           
+        }
        
 
     }
     override func config(position: CGPoint, parent: SKNode) {
         super.config(position: position, parent: parent)
-        let movetoBot=SKAction.movetoBot(position: position, speed: SPEED)
-        let moveAndRemove=SKAction.sequence([movetoBot,SKAction.removeFromParent()])
-        view.run(moveAndRemove)
+        let dest=PlayerController.instance.position
+        let distance = dest.distance(other: self.position)
+        let velocity=dest.substract(other: self.position).divide(ratio: (distance/SPEED))
+        self.view.physicsBody?.velocity=velocity
+        
     }
 
 }
