@@ -14,7 +14,7 @@ class PlayerController:Controller{
     var shootAction: SKAction?
     let playerExplosion=SKSpriteNode(imageNamed: "playerExplosion")
     let playerES=SKAction.playSoundFileNamed("playerExplosionSound", waitForCompletion: false)
-    
+    let eatSound=SKAction.playSoundFileNamed("eat", waitForCompletion: false)
     private init(){
         //set view
       super.init(view: View(texture: PLAYER_TEXTURE))
@@ -53,6 +53,10 @@ class PlayerController:Controller{
         self.view.handlePowerUp = {
             print("Handle power up")
             self.configShoot(powerUp: true)
+        }
+        self.view.handleAddHealth = {
+            self.parent.run(self.eatSound)
+            self.hp=10;
         }
     }
     func move(vector:CGVector){

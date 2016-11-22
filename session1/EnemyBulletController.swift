@@ -19,7 +19,7 @@ class EnemyBulletController:Controller{
         self.view.handleContact = {
             otherView in
             if ((otherView.physicsBody?.categoryBitMask)! & FRAME_MASK) != 0{
-                print("Remove from frame") 
+                print("Enemy bullet remove ") 
             }
             self.view.removeFromParent()
            

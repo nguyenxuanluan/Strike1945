@@ -10,9 +10,11 @@
 import SpriteKit
 
 typealias HandleContactType = (View) -> ()
-typealias HandlePowerUp = () -> ()
+typealias HandlePowerUpType = () -> ()
+typealias HandleAddHealth = () -> ()
 
 class View : SKSpriteNode {
     var handleContact: HandleContactType?
-    var handlePowerUp: HandlePowerUp?
+    var handlePowerUp: HandlePowerUpType?
+    var handleAddHealth: HandleAddHealth?
 }

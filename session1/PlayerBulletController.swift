@@ -30,9 +30,7 @@ class PlayerBulletController: Controller{
     }
     override func config(position: CGPoint, parent: SKNode) {
         super.config(position: position, parent: parent)
-//        let moveToTopAction=SKAction.moveToTop(position: position, rect: parent.frame, speed: SPEED)
-//        let moveAndRemove=SKAction.moveAndRemove(action: moveToTopAction)
-//        view.run(moveAndRemove)
+
     }
     
 }

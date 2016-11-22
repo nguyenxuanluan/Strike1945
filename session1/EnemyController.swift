@@ -8,7 +8,7 @@
 
 import SpriteKit
 class EnemyController:Controller{
-    let explosion = SKSpriteNode(imageNamed: "explosion-1")
+
     
     
     let SPEED:CGFloat = 100
@@ -29,7 +29,7 @@ class EnemyController:Controller{
             
             otherView.removeFromParent()
 
-                self.view.removeFromParent()
+                //self.view.removeFromParent()
             self.explosion(otherView: otherView)
         }
         
@@ -51,14 +51,15 @@ class EnemyController:Controller{
         
     }
     func explosion(otherView: View){
+        let explosion = SKSpriteNode(imageNamed: "explosion-1")
         let playSound=SKAction.playSoundFileNamed("Explosion3", waitForCompletion: false)
-        self.explosion.size=CGSize(width: 40, height: 40)
-        self.explosion.position = otherView.position
-        parent.addChild(self.explosion)
+        explosion.size=CGSize(width: 40, height: 40)
+        explosion.position = otherView.position
+        parent.addChild(explosion)
         let remove=SKAction.run {
-            self.explosion.removeFromParent()
+            explosion.removeFromParent()
         }
-        parent.run(SKAction.sequence([SKAction.wait(forDuration: 0.1),remove]))
+        parent.run(SKAction.sequence([SKAction.wait(forDuration: 0.05),remove]))
         parent.run(playSound)
         
     }

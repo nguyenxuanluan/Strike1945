@@ -28,6 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     let playerController=PlayerController.instance
      var repeatAddEnemies : Timer!
     var repeatAddOtherEnemies : Timer!
+    var repeatAddHealthPlane: Timer!
     func addBackGround(){
         let background=SKSpriteNode(imageNamed: "background")
         background.anchorPoint = CGPoint(x: 0, y: 0)
@@ -55,13 +56,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.addChild(hpLabel)
     }
     func physhics(){
-        let frame=SKSpriteNode(imageNamed: "background")
-        frame.anchorPoint = CGPoint(x: 0, y: 0)
-        frame.position = CGPoint(x: 0, y: 0)
-        frame.physicsBody=SKPhysicsBody(rectangleOf: frame.size)
-        frame.physicsBody?.categoryBitMask=FRAME_MASK
-        frame.physicsBody?.contactTestBitMask=ENEMY_BULLET_MASK
-        frame.physicsBody?.collisionBitMask=0
+        let scenePhysics=View(texture: SKTexture(imageNamed: "background"))
+        scenePhysics.zPosition = -1
+        scenePhysics.anchorPoint = CGPoint(x: 0, y: 0)
+        scenePhysics.position = CGPoint(x: 0, y: 0)
+        scenePhysics.physicsBody=SKPhysicsBody(edgeLoopFrom: self.frame)
+        scenePhysics.physicsBody?.categoryBitMask=FRAME_MASK
+        scenePhysics.physicsBody?.contactTestBitMask=ENEMY_BULLET_MASK
+        scenePhysics.physicsBody?.collisionBitMask=0
+        scenePhysics.handleContact = {
+            otherView in
+            otherView.removeFromParent()
+        }
+        self.addChild(scenePhysics)
 
     }
     override func didMove(to view: SKView) {
@@ -74,11 +81,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let playerPosition=CGPoint(x: self.size.width/2, y: playerController.height/2)
         playerController.config(position: playerPosition, parent: self)
         physhics()
-        //addEnemies()
-        //addOtherEnemies()
         repeatAddEnemies = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(addEnemies), userInfo: nil, repeats: true)
         repeatAddOtherEnemies = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(addOtherEnemies), userInfo: nil, repeats: true)
-       
+        repeatAddHealthPlane=Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(addHealthPlane), userInfo: nil, repeats: true)
         
     }
 
@@ -92,6 +97,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             == (PLAYER_MASK | ENEMY_BULLET_MASK){
             hp-=1
                     }
+        if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask)
+            == (PLAYER_MASK | HEALTH_MASK){
+            hp=10
+        }
         viewA.handleContact?(viewB)
         viewB.handleContact?(viewA)
         if hp==0 {
@@ -111,6 +120,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         enemyController1.config(position: CGPoint(x: self.size.width*CGFloat(rd.1),y: self.size.height ), parent: self)
         enemyController2.config(position: CGPoint(x: self.size.width*CGFloat(rd.0),y: self.size.height), parent: self)
       
+    }
+    func addHealthPlane(){
+        let healthPlane=HealthPlaneController()
+        let rd=random()
+        let startPoint=CGPoint(x:0 , y: self.size.height*CGFloat(rd.0))
+        healthPlane.config(position: startPoint, parent: self)
     }
     func addOtherEnemies(){
         let otherEnemyController=OtherEnemyController(texture: LEFT_ENEMY_TEXTURE)
